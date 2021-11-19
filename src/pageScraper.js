@@ -4,6 +4,13 @@ const scraperObject = {
         let page = await browser.newPage();
         console.log(`Navigating to  ${this.url}...`);
         await page.goto(this.url)
+        //Wait for the DOM to be rendered
+        await page.waitForSelector('body');
+        //Get the link to all products
+        let urls = await page.$$eval('article ul > li', links => {
+            return links
+        }) 
+        console.log(urls);
     }
 }
 

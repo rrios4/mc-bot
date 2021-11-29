@@ -1,7 +1,7 @@
 ## Sample Product Information
 Title: "Intel Core i7-12700K Alder Lake 3.6GHz Twelve-Core LGA 1700 Boxed Processor - Heatsink Not Included",
 SKU: "326652"
-Status: "LIMITED AVAILABILITY - BUY IN STORE", "SOLD OUT"
+Status: "LIMITED AVAILABILITY - BUY IN STORE", "SOLD OUT AT HOUSTON STORE"
 OnlineStatus: "UNAVAILABLE ONLINE", "IN STORE ONLY",
 ButtonAction: "LOCATE", or n/a
 MSRP: "$449.99", or n/a

@@ -45,6 +45,7 @@ const scraperObject = {
         console.log(productAvailability)
 
         let productStockStatus = await page.$$eval('article > ul > li', stockStatus => {
+            //stockStatus = stockStatus.filter(status => status.querySelector(''))
             stockStatus = stockStatus.map(el => el.querySelector('.stock').textContent);
             return stockStatus
         })

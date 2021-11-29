@@ -59,10 +59,11 @@ const scraperObject = {
         // console.log(buttonInfo);
 
         let productsObject = {};
+        const productsArray = []
 
         for(i=0; i < urls.length; i++){
             //console.log(i)
-            // console.log(urls[i]);
+            //console.log(urls[i]);
             productsObject['title'] = productTitles[i];
             productsObject['productURL'] = urls[i]
             productsObject['imgURL'] = imgURLS[i]
@@ -70,8 +71,11 @@ const scraperObject = {
             productsObject['price'] = prices[i]
             productsObject['availability'] = productAvailability[i];
             //productsObject['stock'] = productStockStatus[i]
-            console.log(productsObject);
+            // console.log(productsObject);
+            productsArray.push(productsObject)
         }
+        console.log(productsArray);
+        return productsArray
     }
 }
 

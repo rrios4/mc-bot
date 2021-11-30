@@ -46,7 +46,7 @@ const scraperObject = {
 
         let productStockStatus = await page.$$eval('article > ul > li', stockStatus => {
             //stockStatus = stockStatus.filter(status => status.querySelector(''))
-            stockStatus = stockStatus.map(el => el.querySelector('.stock').textContent.replace(/(\r\n\t|\n|\r|\t)/gm,""));
+            stockStatus = stockStatus.map(el => el.querySelector('.stock').textContent.replace(/(\r\n\t|\n|\r|\t)/gm,"").trim());
             return stockStatus
         })
         //console.log(productStockStatus);
@@ -58,24 +58,19 @@ const scraperObject = {
         // })
         // console.log(buttonInfo);
 
-        let productsObject = {};
-        const productsArray = []
-
+        let productsArray = [];
         for(i=0; i < urls.length; i++){
-            //console.log(i)
-            //console.log(urls[i]);
-            productsObject['title'] = productTitles[i];
-            productsObject['productURL'] = urls[i]
-            productsObject['imgURL'] = imgURLS[i]
-            productsObject['productSKU'] = productSKU[i]
-            productsObject['price'] = prices[i]
-            productsObject['availability'] = productAvailability[i];
-            //productsObject['stock'] = productStockStatus[i]
-            // console.log(productsObject);
-            productsArray.push(productsObject)
+            productsArray.push({
+                    "title": productTitles[i],
+                    "productURL": urls[i],
+                    "imgURL": imgURLS[i],
+                    "productSKU": productSKU[i],
+                    "price": prices[i],
+                    "availability": productAvailability[i],
+                    "stock": productStockStatus[i]
+            })
         }
         console.log(productsArray);
-        return productsArray
     }
 }
 

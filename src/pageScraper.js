@@ -1,5 +1,5 @@
 const scraperObject = {
-    url: 'https://www.microcenter.com/search/search_results.aspx?Ntk=all&sortby=match&N=4294966965+4294815592&myStore=false',
+    url: 'https://www.microcenter.com/search/search_results.aspx?N=4294966965+4294815592&NTK=all&sortby=match&rpp=96&storeid=155',
     //url: 'https://www.microcenter.com/category/4294966995/all-processors',
     async scraper(browser){
         let page = await browser.newPage();

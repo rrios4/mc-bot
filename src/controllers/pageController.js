@@ -1,10 +1,12 @@
 const axios = require('axios')
 const pageScraper = require('../pageScraper');
+const { DateTime } = require('luxon');
 require('dotenv').config()
 
 async function scrapeAll(browserInstance) {
     let browser;
     let discordWebhookURL = process.env.DISCORD_WEBHOOK_URL
+    let date = DateTime.now().setZone("America/Chicago")
     // Returns a Promise that resolves after "ms" Milliseconds
     const timer = ms => new Promise(res => setTimeout(res, ms))
     try{
@@ -13,7 +15,7 @@ async function scrapeAll(browserInstance) {
 
         for(i=0;i < products.length; i++){
             if(products[i].stock === 'SOLD OUT at Houston Store'){
-                console.log('OUT OF STOCK!!',`${products[i].title}`)
+                console.log(`${date.year}-${date.month}-${date.day}T${date.hour}:${date.minute}:${date.second}.${date.millisecond}Z`,'OUT OF STOCK!!',`${products[i].title}`)
                 
             } else {
                 console.log('IN STOCK!!',`${products[i].title}`)
@@ -31,6 +33,10 @@ async function scrapeAll(browserInstance) {
                         "url": products[i].url,
                         "image": {
                             "url": products[i].imgURL
+                        },
+                        "footer": {
+                            "text": `${date.year}-${date.month}-${date.day} ${date.hour}:${date.minute}:${date.second}`,
+                            "icon_url": "https://icons.iconarchive.com/icons/flat-icons.com/flat/512/Clock-icon.png"
                         },
                         "fields": [{
                             "name": "Title",
@@ -71,7 +77,7 @@ async function scrapeAll(browserInstance) {
             }
             await timer(300);
         }
-        
+        browser.close()
     }
     catch(err){
         console.log("Could not resolve the browser instance => ", err)

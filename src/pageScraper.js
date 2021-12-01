@@ -33,7 +33,7 @@ const scraperObject = {
         //console.log(productTitles)
 
         let productSKU = await page.$$eval('article > ul > li', stockStatus => {
-            stockStatus = stockStatus.map(el => el.querySelector('p').textContent)
+            stockStatus = stockStatus.map(el => el.querySelector('p').textContent.replace("SKU:",'').trim())
             return stockStatus
         })
         //console.log(productSKU)
@@ -64,13 +64,14 @@ const scraperObject = {
                     "title": productTitles[i],
                     "productURL": urls[i],
                     "imgURL": imgURLS[i],
-                    "productSKU": productSKU[i],
+                    "sku": productSKU[i],
                     "price": prices[i],
                     "availability": productAvailability[i],
                     "stock": productStockStatus[i]
             })
         }
-        console.log(productsArray);
+        //console.log(productsArray);
+        return productsArray;
     }
 }
 

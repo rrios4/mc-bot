@@ -1,9 +1,10 @@
 const axios = require('axios')
 const pageScraper = require('../pageScraper');
+require('dotenv').config()
 
 async function scrapeAll(browserInstance) {
     let browser;
-    let discordWebhookURL = 'https://discord.com/api/webhooks/915333342663176242/a0NoKND2VM2PTzEd2RSc6T8TufNb9IzIwUV6FzKlU4t7gYQu1Ec0jalvrbYD89R9tJuj'
+    let discordWebhookURL = process.env.DISCORD_WEBHOOK_URL
     // Returns a Promise that resolves after "ms" Milliseconds
     const timer = ms => new Promise(res => setTimeout(res, ms))
     try{

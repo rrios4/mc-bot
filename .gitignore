@@ -1,5 +1,6 @@
 ## Production
 node_modules
+.env
 
 ## Ignore test files
 /src/test

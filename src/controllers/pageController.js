@@ -15,7 +15,7 @@ async function scrapeAll(browserInstance) {
 
         for(i=0;i < products.length; i++){
             if(products[i].stock === 'SOLD OUT at Houston Store'){
-                console.log(`${date.year}-${date.month}-${date.day}T${date.hour}:${date.minute}:${date.second}.${date.millisecond}Z`,'OUT OF STOCK!!',`${products[i].title}`)
+                console.log(new Date(),'OUT OF STOCK!!',`${products[i].title}`)
                 
             } else {
                 console.log('IN STOCK!!',`${products[i].title}`)
